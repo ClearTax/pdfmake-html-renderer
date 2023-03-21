@@ -1,16 +1,23 @@
-import type { ContentTable, CustomTableLayout } from 'pdfmake/interfaces'
+import type { ContentTable, CustomTableLayout, Table } from 'pdfmake/interfaces'
 import type { ActualTableCell } from '../logic/table'
 import type { CssDictionary } from './css-dictionary'
 import { getSize } from './size'
 import { colorToRgb, getStyleString } from './utils'
 
-export function getTableStyleString(node: ContentTable): string | undefined {
+interface CustomeContentTable extends ContentTable
+{
+  table: Table & { isDynamic: boolean };
+}
+
+export function getTableStyleString (node: CustomeContentTable): string | undefined
+{
   if (!node.table.widths) return undefined
 
   const style: CssDictionary = {}
+  console.log(node.table);
 
-  if (node.table.widths) {
-    console.log(node.table)
+  if (node.table.widths)
+  {
     if (node.table.widths === '*') {
       style['table-layout'] = 'fixed'
       style['width'] = '100%'
@@ -21,9 +28,15 @@ export function getTableStyleString(node: ContentTable): string | undefined {
       style['width'] = '100%'
       style['word-wrap'] = 'break-word'
       style['font-size'] = '8px'
-    } else
+    } else if (node.table.isDynamic)
     {
       style['table-layout'] = 'fixed'
+      style['width'] = '100%'
+      style['word-wrap'] = 'break-word'
+      style['font-size'] = '8px'
+    } else 
+    {
+      style['table-layout'] = 'auto'
       style['width'] = '100%'
       style['word-wrap'] = 'break-word'
       style['font-size'] = '8px'
