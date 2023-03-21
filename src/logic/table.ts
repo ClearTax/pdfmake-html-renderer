@@ -48,5 +48,6 @@ export function shouldRenderCell(
   columnIndex: number,
   coveredCells: Set<string>
 ): cell is ActualTableCell {
+  if ((cell as any).text === 'New Column : ') return false
   return !coveredCells.has(`${rowIndex}-${columnIndex}`)
 }
