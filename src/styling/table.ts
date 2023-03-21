@@ -32,7 +32,7 @@ export function getTableStyleString (node: CustomeContentTable): string | undefi
     {
       style['table-layout'] = 'fixed'
       style['width'] = '100%'
-      style['word-wrap'] = 'break-word'
+      style['overflow-wrap'] = 'break-word'
       style['font-size'] = '8px'
     } else 
     {
@@ -196,7 +196,7 @@ export function getTableCellStyleString(
     if (fillColor) {
       const fillColorRgb = colorToRgb(fillColor)
       if (fillColorRgb) {
-        style['background'] = fillColorRgb.join(', ')
+        style['--fill-color'] = fillColorRgb.join(', ')
         style['--fill-opacity'] = '1'
       }
     }
@@ -215,7 +215,7 @@ export function getTableCellStyleString(
     if ('fillColor' in node && node.fillColor) {
       const fillColorRgb = colorToRgb(node.fillColor)
       if (fillColorRgb) {
-        style['background'] = fillColorRgb.join(', ')
+        style['--fill-color'] = fillColorRgb.join(', ')
         style['--fill-opacity'] = '1'
       }
     }
