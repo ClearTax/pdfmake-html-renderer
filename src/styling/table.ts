@@ -14,7 +14,7 @@ export function getTableStyleString (node: CustomeContentTable): string | undefi
   if (!node.table.widths) return undefined
 
   const style: CssDictionary = {}
-  console.log(node.table);
+  // console.log(node.table);
 
   if (node.table.widths)
   {
@@ -39,7 +39,7 @@ export function getTableStyleString (node: CustomeContentTable): string | undefi
       style['table-layout'] = 'auto'
       style['width'] = '100%'
       style['word-wrap'] = 'break-word'
-      style['font-size'] = '8px'
+      // style['font-size'] = '8px'
     }
   }
 
@@ -196,7 +196,7 @@ export function getTableCellStyleString(
     if (fillColor) {
       const fillColorRgb = colorToRgb(fillColor)
       if (fillColorRgb) {
-        style['--fill-color'] = fillColorRgb.join(', ')
+        style['background'] = fillColor
         style['--fill-opacity'] = '1'
       }
     }
@@ -214,8 +214,9 @@ export function getTableCellStyleString(
     }
     if ('fillColor' in node && node.fillColor) {
       const fillColorRgb = colorToRgb(node.fillColor)
+      console.log(node.fillColor);
       if (fillColorRgb) {
-        style['--fill-color'] = fillColorRgb.join(', ')
+        style['background'] = `${node.fillColor}`
         style['--fill-opacity'] = '1'
       }
     }

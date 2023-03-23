@@ -14,7 +14,7 @@ function getContentStyleDictionary(
     pageSize.orientation === 'landscape' ? pageSize.height : pageSize.width
 
   const styles: CssDictionary = {
-    'max-width': maxWidth + 'pt',
+    'max-width': '100%',
   }
 
   // some elements need display: block
