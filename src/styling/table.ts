@@ -6,7 +6,7 @@ import { colorToRgb, getStyleString } from './utils'
 
 interface CustomeContentTable extends ContentTable
 {
-  table: Table & { isDynamic: boolean };
+  table: Table & { isDynamic?: boolean };
 }
 
 export function getTableStyleString (node: CustomeContentTable): string | undefined
@@ -14,7 +14,6 @@ export function getTableStyleString (node: CustomeContentTable): string | undefi
   if (!node.table.widths) return undefined
 
   const style: CssDictionary = {}
-  // console.log(node.table);
 
   if (node.table.widths)
   {
@@ -196,6 +195,7 @@ export function getTableCellStyleString(
     if (fillColor) {
       const fillColorRgb = colorToRgb(fillColor)
       if (fillColorRgb) {
+        console.log('color', fillColor);
         style['background'] = fillColor
         style['--fill-opacity'] = '1'
       }
@@ -214,7 +214,7 @@ export function getTableCellStyleString(
     }
     if ('fillColor' in node && node.fillColor) {
       const fillColorRgb = colorToRgb(node.fillColor)
-      console.log(node.fillColor);
+      console.log(node.fillColor, 'td color');
       if (fillColorRgb) {
         style['background'] = `${node.fillColor}`
         style['--fill-opacity'] = '1'

@@ -9,6 +9,7 @@
     getTableCellStyleString,
     getTableStyleString,
   } from '../styling/table'
+  import { generateRandomFroalaId } from '../utils/index';
   import ContentRenderer from './ContentRenderer.svelte'
 
   export let node: ContentTable
@@ -29,6 +30,7 @@
     <tr
       class:phr-header={(node.table.headerRows ?? -1) === rowIndex + 1 &&
         rowIndex < (node.table?.body.length ?? 0) - 1}
+      id={generateRandomFroalaId()}
     >
       {#each tr as td, columnIndex}
         {#if shouldRenderCell(td, rowIndex, columnIndex, coveredCells)}
