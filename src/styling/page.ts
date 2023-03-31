@@ -100,7 +100,6 @@ export function getPageStyleString(
 
   if (mode !== 'fluid') {
     const { width, height } = getPageSize(document)
-    console.log(width, height, 'doc width and height');
 
     style.width = '100%'
     style['min-height'] = height + 'pt'
