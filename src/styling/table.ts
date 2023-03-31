@@ -194,8 +194,8 @@ export function getTableCellStyleString(
     })
     if (fillColor) {
       const fillColorRgb = colorToRgb(fillColor)
-      if (fillColorRgb) {
-        console.log('color', fillColor);
+      if (fillColorRgb)
+      {
         style['background'] = fillColor
         style['--fill-opacity'] = '1'
       }
@@ -214,7 +214,6 @@ export function getTableCellStyleString(
     }
     if ('fillColor' in node && node.fillColor) {
       const fillColorRgb = colorToRgb(node.fillColor)
-      console.log(node.fillColor, 'td color');
       if (fillColorRgb) {
         style['background'] = `${node.fillColor}`
         style['--fill-opacity'] = '1'
