@@ -12,7 +12,6 @@
   import WatermarkRenderer from './WatermarkRenderer.svelte'
 
   export let document: TDocumentDefinitions
-  export let pageShadow: boolean
   export let mode: PageSizeMode
 
   let clientWidth: number
@@ -21,7 +20,6 @@
 <div bind:clientWidth class="phr-container">
   <div
     class="phr-page"
-    class:phr-pageShadow={pageShadow}
     style={getPageStyleString(document, clientWidth, mode)}
   >
     {#if document.background}
@@ -70,9 +68,6 @@
     letter-spacing: normal;
     text-decoration: none;
     overflow: hidden;
-  }
-  .phr-pageShadow {
-    box-shadow: 0 0 2em #333;
   }
   .phr-header {
     position: absolute;

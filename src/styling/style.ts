@@ -75,7 +75,7 @@ export function getStyleDictionary(style: Style | undefined, isNode = false) {
   if (style.fillColor) {
     const fillColorRgb = colorToRgb(style.fillColor)
     if (fillColorRgb) {
-      obj['--fill-color'] = fillColorRgb.join(', ')
+      obj['background'] = `${style.fillColor}`
       obj['--fill-opacity'] = '1'
     }
   }
